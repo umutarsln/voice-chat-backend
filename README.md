@@ -44,6 +44,8 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+Uygulama çalışırken **Swagger UI** ile API'leri inceleyip test edebilirsiniz: [http://localhost:1231/api](http://localhost:1231/api)
+
 ## Run tests
 
 ```bash

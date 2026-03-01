@@ -84,4 +84,5 @@ find() {
 - **API sürümü**: Breaking change planlanıyorsa `/v1/...` veya header ile sürümleme tek yerden.
 - **Rate limiting**: Kritik endpoint’lerde rate limit **varsayılan** uygulanır. Hangi endpoint’lerin kritik olduğu ve limit değerleri **tek bir dosyada** (örn. `src/common/config/rate-limit.config.ts`) belirtilir; değiştirmek istediğimizde sadece bu dosyayı düzenleriz. Tek guard/middleware kullanılır.
 - **Health check**: `/health` veya `/ready` deployment/load balancer için tek yerde.
+- **Swagger**: API'leri kontrol etmek ve dokümante etmek için Swagger kullanılır. `main.ts` içinde tek noktadan ayarlanır (path: `/api`). Her controller'da `@ApiTags('ModülAdı')`, endpoint'lerde `@ApiOperation({ summary: '...' })` ve DTO'larda `@ApiProperty()` ile açıklama eklenir; Swagger UI güncel kalır ve API'ler tek yerden test edilebilir.
 - **İdempotency**: Yan etki olmaması gereken isteklerde (ödeme, kayıt, tek seferlik işlemler) **idempotency key** kullanılır. Strateji tektir: client `Idempotency-Key` header gönderir, guard + cache (veya DB) ile aynı key’in tekrar işlenmesi engellenir; değiştirmek istersek tek yerde (guard + config) düzenlenir.
